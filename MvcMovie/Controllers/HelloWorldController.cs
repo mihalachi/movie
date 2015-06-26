@@ -9,9 +9,9 @@ namespace MvcMovie.Controllers
         // 
         // GET: /HelloWorld/ 
 
-        public string Index()
+        public ActionResult Index()
         {
-            return "This is my <b>default</b> action...";
+            return View();
         }
 
         // 
@@ -32,11 +32,19 @@ namespace MvcMovie.Controllers
         // model binder - also is posible to pass data using model binder, and it does not require to modifi default route.
 
 
-        // parameter as route data
-        // http://localhost:xxx/HelloWorld/Welcome/3?name=Rick
-        public string Welcome(string name, int ID = 1)
+//        // parameter as route data
+//        // http://localhost:xxx/HelloWorld/Welcome/3?name=Rick
+//        public string Welcome(string name, int ID = 1)
+//        {
+//            return HttpUtility.HtmlEncode("Hello " + name + ", ID: " + ID);
+//        }
+
+        public ActionResult Welcome(string name, int numTimes = 1)
         {
-            return HttpUtility.HtmlEncode("Hello " + name + ", ID: " + ID);
+            ViewBag.Message = "Hello " + name;
+            ViewBag.NumTimes = numTimes;
+
+            return View();
         }
     }
 }
